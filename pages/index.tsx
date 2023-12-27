@@ -11,7 +11,7 @@ import cloudinary from "../utils/cloudinary";
 import getBase64ImageUrl from "../utils/generateBlurPlaceholder";
 import type { ImageProps } from "../utils/types";
 import { useLastViewedPhoto } from "../utils/useLastViewedPhoto";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
   const { photoId } = router.query;
@@ -29,6 +29,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
 
   return (
     <>
+      <SpeedInsights />
       <Head>
         <title>Next.js Conf 2024 Photos</title>
         <meta
@@ -102,34 +103,14 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         </div>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
-        Thank you to{" "}
         <a
-          href="https://edelsonphotography.com/"
+          href="https://sandra.al-theeb.com/"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          Josh Edelson
+          Sandra Hnaidy
         </a>
-        ,{" "}
-        <a
-          href="https://www.newrevmedia.com/"
-          target="_blank"
-          className="font-semibold hover:text-white"
-          rel="noreferrer"
-        >
-          Jenny Morgan
-        </a>
-        , and{" "}
-        <a
-          href="https://www.garysextonphotography.com/"
-          target="_blank"
-          className="font-semibold hover:text-white"
-          rel="noreferrer"
-        >
-          Gary Sexton
-        </a>{" "}
-        for the pictures.
       </footer>
     </>
   );
@@ -139,10 +120,13 @@ export default Home;
 
 export async function getStaticProps() {
   const results = await cloudinary.v2.search
-    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
+    .expression(
+      `folder:${process.env.CLOUDINARY_FOLDER}/* AND resource_type:image AND -format:GIF`
+    )
     .sort_by("public_id", "desc")
     .max_results(400)
     .execute();
+
   let reducedResults: ImageProps[] = [];
 
   let i = 0;
