@@ -31,14 +31,14 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
     <>
       <SpeedInsights />
       <Head>
-        <title>Next.js Conf 2024 Photos</title>
+        <title>Gallery {date.getFullYear()} Photos</title>
         <meta
           property="og:image"
-          content="https://nextjsconf-pics.vercel.app/og-image.png"
+          content="https://gallery-dupskuy60-sandra-hn.vercel.app/og-image.png"
         />
         <meta
           name="twitter:image"
-          content="https://nextjsconf-pics.vercel.app/og-image.png"
+          content="https://gallery-dupskuy60-sandra-hn.vercel.app/og-image.png"
         />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
@@ -60,19 +60,20 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             </div>
             <Logo />
             <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">
-              {date.getFullYear()} Event Photos
+              {date.getFullYear()} Gallery with Cloudinary
             </h1>
             <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch]">
-              Our incredible Next.js community got together in San Francisco for
-              our first ever in-person conference!
+              Elevate performance with dynamic rendering through Next.js and
+              optimized image management via Cloudinary. Swift loading times and
+              dynamic updates create a visually engaging user experience.
             </p>
             <a
               className="pointer z-10 mt-6 rounded-lg border border-white bg-white px-3 py-2 text-sm font-semibold text-black transition hover:bg-white/10 hover:text-white md:mt-4"
-              href="https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application"
+              href="https://sandra.al-theeb.com/#contact"
               target="_blank"
               rel="noreferrer"
             >
-              Clone and Deploy
+              Contact me
             </a>
           </div>
           {images.map(({ id, public_id, format, blurDataUrl }) => (
@@ -85,7 +86,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
               className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
             >
               <Image
-                alt="Next.js Conf photo"
+                alt="Gallery photo"
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                 style={{ transform: "translate3d(0, 0, 0)" }}
                 placeholder="blur"
@@ -111,6 +112,12 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         >
           Sandra Hnaidy
         </a>
+        <div className="hidden">
+          Logo made by{" "}
+          <a href="https://www.designevo.com/" title="Free Online Logo Maker">
+            DesignEvo free logo creator
+          </a>
+        </div>
       </footer>
     </>
   );

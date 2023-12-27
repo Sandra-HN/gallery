@@ -1,5 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
+const date = new Date();
 class MyDocument extends Document {
   render() {
     return (
@@ -8,19 +9,25 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="See pictures from Next.js Conf and the After Party."
+            content="See pictures from Gallery and the After Party."
           />
           <meta property="og:site_name" content="nextjsconf-pics.vercel.app" />
           <meta
             property="og:description"
-            content="See pictures from Next.js Conf and the After Party."
+            content="See pictures from Gallery and the After Party."
           />
-          <meta property="og:title" content="Next.js Conf 2024 Pictures" />
+          <meta
+            property="og:title"
+            content={`Gallery ${date.getFullYear()} Pictures`}
+          />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Next.js Conf 2024 Pictures" />
+          <meta
+            name="twitter:title"
+            content={`Gallery ${date.getFullYear()} Pictures`}
+          />
           <meta
             name="twitter:description"
-            content="See pictures from Next.js Conf and the After Party."
+            content="See pictures from Gallery and the After Party."
           />
         </Head>
         <body className="bg-black antialiased">
